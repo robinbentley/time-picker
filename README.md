@@ -1,33 +1,26 @@
-# TimePicker
+# TimePicker 
+[![CircleCI](https://circleci.com/gh/robinbentley/time-picker/tree/master.svg?style=svg)](https://circleci.com/gh/robinbentley/time-picker/tree/master)
 
-React TimePicker using Luxon
+Version of [react-component/time-picker](https://github.com/react-component/time-picker) that uses [Luxon](https://github.com/moment/luxon) rather than Moment.
 
-
-example
---------
-
+### Examples
 https://robinbentley.github.io/time-picker-luxon/
 
-install
--------
-
+### Install
 ```
 npm install --save rc-time-picker-luxon
 ```
 
-Usage
------
+### Usage
 
-```
+```jsx
+// include rc-time-picker-luxon/assets/index.css however your styles are managed
 import TimePicker from 'rc-time-picker-luxon';
 import ReactDOM from 'react-dom';
 ReactDOM.render(<TimePicker />, container);
 ```
 
-API
----
-
-### TimePicker
+### Props
 
 | Name                    | Type                              | Default | Description |
 |-------------------------|-----------------------------------|---------|-------------|
@@ -61,28 +54,23 @@ API
 | onClose                 | Function({ open })                |   | when TimePicker panel is closed      |
 | hourStep                | Number                            | 1 | interval between hours in picker  |
 | minuteStep              | Number                            | 1 | interval between minutes in picker  |
-| secondStep              | Number                            | 1 | interval between seconds in picker  |
-| focusOnOpen             | Boolean                           | false | automatically focus the input when the picker opens |
+| secondStep              | Number                            | 1 | interval between seconds in picker  |Test Case
+| focusOnOpen             | Boolean     Test Case                      | false | automatically focus the input when the picker opens |
 | inputReadOnly             | Boolean                           | false | set input to read only |
 | inputIcon             | ReactNode                           |  | specific the select icon. |
 | clearIcon             | ReactNode                           |  | specific the clear icon. |
 
-## Test Case
-
+### Running Tests
 ```
 npm test
 npm run chrome-test
 ```
 
-## Coverage
-
+### Coverage
 ```
 npm run coverage
 ```
-
 open coverage/ dir
 
-License
--------
-
+### License
 rc-time-picker-luxon is released under the MIT license.
