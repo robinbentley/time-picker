@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet"/>
-  <title>rc-time-picker-luxon@0.0.1-beta - React TimePicker using Luxon</title>
+  <title>rc-time-picker-luxon@1.0.0-beta - React TimePicker using Luxon</title>
   <style>
     @font-face {
       font-family: octicons-anchor;
@@ -737,7 +737,7 @@
 
 <body>
 <div class="header">
-  <h1>rc-time-picker-luxon@0.0.1-beta</h1>
+  <h1>rc-time-picker-luxon@1.0.0-beta</h1>
 </div>
 <div class="examples">
   <h3>EXAMPLES</h3>
@@ -766,11 +766,13 @@
 <div id="readme" class="boxed-group">
   <h3>README.md</h3>
   <div class="markdown-body">
-    <h1>TimePicker<a id="user-content-timepicker" name="timepicker" class="anchor" aria-hidden="true" href="#timepicker"><span class="octicon octicon-link"></span></a></h1><p>React TimePicker using Luxon</p>
-<h2>example<a id="user-content-example" name="example" class="anchor" aria-hidden="true" href="#example"><span class="octicon octicon-link"></span></a></h2><p><a href="https://robinbentley.github.io/time-picker-luxon/" title="null">https://robinbentley.github.io/time-picker-luxon/</a></p>
-<h2>install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">npm install --save rc-time-picker-luxon</code></pre></div><h2>Usage<a id="user-content-usage" name="usage" class="anchor" aria-hidden="true" href="#usage"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> TimePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-luxon'</span>;
+    <h1>TimePicker<a id="user-content-timepicker" name="timepicker" class="anchor" aria-hidden="true" href="#timepicker"><span class="octicon octicon-link"></span></a></h1><p><a href="https://circleci.com/gh/robinbentley/time-picker/tree/master" title="null"><img src="https://circleci.com/gh/robinbentley/time-picker/tree/master.svg?style=svg" alt="CircleCI"></a></p>
+<p>Version of <a href="https://github.com/react-component/time-picker" title="null">react-component/time-picker</a> that uses <a href="https://github.com/moment/luxon" title="null">Luxon</a> rather than Moment.</p>
+<h3>Examples<a id="user-content-examples" name="examples" class="anchor" aria-hidden="true" href="#examples"><span class="octicon octicon-link"></span></a></h3><p><a href="https://robinbentley.github.io/time-picker-luxon/" title="null">https://robinbentley.github.io/time-picker-luxon/</a></p>
+<h3>Install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h3><div class="highlight"><pre><code language="undefined">npm install --save rc-time-picker-luxon</code></pre></div><h3>Usage<a id="user-content-usage" name="usage" class="anchor" aria-hidden="true" href="#usage"><span class="octicon octicon-link"></span></a></h3><div class="highlight"><pre><code language="js"><span class="hljs-comment">// include rc-time-picker-luxon/assets/index.css however your styles are managed</span>
+<span class="hljs-keyword">import</span> TimePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-luxon'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">TimePicker</span> /&gt;</span>, container);</span></code></pre></div><h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>TimePicker<a id="user-content-timepicker" name="timepicker" class="anchor" aria-hidden="true" href="#timepicker"><span class="octicon octicon-link"></span></a></h3><table>
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">TimePicker</span> /&gt;</span>, container);</span></code></pre></div><h3>Props<a id="user-content-props" name="props" class="anchor" aria-hidden="true" href="#props"><span class="octicon octicon-link"></span></a></h3><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -966,10 +968,11 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-t
 <td>Number</td>
 <td>1</td>
 <td>interval between seconds in picker</td>
+<td>Test Case</td>
 </tr>
 <tr>
 <td>focusOnOpen</td>
-<td>Boolean</td>
+<td>Boolean     Test Case</td>
 <td>false</td>
 <td>automatically focus the input when the picker opens</td>
 </tr>
@@ -993,9 +996,9 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-t
 </tr>
 </tbody>
 </table>
-<h2>Test Case<a id="user-content-test-case" name="test-case" class="anchor" aria-hidden="true" href="#test-case"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">npm test
-npm run chrome-test</code></pre></div><h2>Coverage<a id="user-content-coverage" name="coverage" class="anchor" aria-hidden="true" href="#coverage"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">npm run coverage</code></pre></div><p>open coverage/ dir</p>
-<h2>License<a id="user-content-license" name="license" class="anchor" aria-hidden="true" href="#license"><span class="octicon octicon-link"></span></a></h2><p>rc-time-picker-luxon is released under the MIT license.</p>
+<h3>Running Tests<a id="user-content-running-tests" name="running-tests" class="anchor" aria-hidden="true" href="#running-tests"><span class="octicon octicon-link"></span></a></h3><div class="highlight"><pre><code language="undefined">npm test
+npm run chrome-test</code></pre></div><h3>Coverage<a id="user-content-coverage" name="coverage" class="anchor" aria-hidden="true" href="#coverage"><span class="octicon octicon-link"></span></a></h3><div class="highlight"><pre><code language="undefined">npm run coverage</code></pre></div><p>open coverage/ dir</p>
+<h3>License<a id="user-content-license" name="license" class="anchor" aria-hidden="true" href="#license"><span class="octicon octicon-link"></span></a></h3><p>rc-time-picker-luxon is released under the MIT license.</p>
 
   </div>
 </div>
