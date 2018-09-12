@@ -7,7 +7,7 @@ const Simulate = TestUtils.Simulate;
 import expect from 'expect.js';
 import async from 'async';
 import KeyCode from 'rc-util/lib/KeyCode';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 describe('Header', () => {
   let container;
@@ -20,7 +20,7 @@ describe('Header', () => {
       <TimePicker
         format={format}
         showSecond={showSecond}
-        defaultValue={moment('01:02:03', format)}
+        defaultValue={DateTime.fromFormat('01:02:03', format)}
         {...props}
       />, container);
   }

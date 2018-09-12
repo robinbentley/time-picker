@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Trigger from 'rc-trigger';
 import Panel from './Panel';
 import placements from './placements';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 function noop() {
 }
@@ -70,7 +70,7 @@ export default class Picker extends Component {
     popupClassName: '',
     id: '',
     align: {},
-    defaultOpenValue: moment(),
+    defaultOpenValue: DateTime.local(),
     allowEmpty: true,
     showHour: true,
     showMinute: true,
@@ -289,7 +289,7 @@ export default class Picker extends Component {
             name={name}
             onKeyDown={this.onKeyDown}
             disabled={disabled}
-            value={value && value.format(this.getFormat()) || ''}
+            value={value && value.toFormat(this.getFormat()) || ''}
             autoComplete={autoComplete}
             onFocus={onFocus}
             onBlur={onBlur}
