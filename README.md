@@ -55,9 +55,9 @@ API
 | disabled                | Boolean                           | false   | whether picker is disabled |
 | allowEmpty              | Boolean                           | true | allow clearing text |
 | open                    | Boolean                           | false | current open state of picker. controlled prop |
-| defaultValue            | moment                            | null | default initial value |
-| defaultOpenValue        | moment                            | moment() | default open panel value, used to set utcOffset,locale if value/defaultValue absent |
-| value                   | moment                            | null | current value |
+| defaultValue            | DateTime                            | null | default initial value |
+| defaultOpenValue        | DateTime                            | DateTime.local() | default open panel value, used to set utcOffset,locale if value/defaultValue absent |
+| value                   | DateTime                            | null | current value |
 | placeholder             | String                            | '' | time input's placeholder |
 | className               | String                            | '' | time picker className |
 | id                      | String                            | '' | time picker id |

@@ -5,16 +5,16 @@ import 'rc-time-picker/assets/index.less';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 import TimePicker from 'rc-time-picker';
 
 const format = 'h:mm a';
 
-const now = moment().hour(0).minute(0);
+const now = DateTime.fromObject({ hour: 0, minute: 0 });
 
 function onChange(value) {
-  console.log(value && value.format(format));
+  console.log(value && value.toFormat(format));
 }
 
 ReactDom.render(
