@@ -1,8 +1,8 @@
-import 'rc-time-picker/assets/index.less';
+import 'rc-time-picker-luxon/assets/index.less';
 import React from 'react';
 import ReactDom from 'react-dom';
 import { DateTime } from 'luxon';
-import TimePicker from 'rc-time-picker';
+import TimePicker from 'rc-time-picker-luxon';
 
 ReactDom.render(
   <div>

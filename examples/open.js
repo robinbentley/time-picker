@@ -1,9 +1,9 @@
 /* eslint no-console:0 */
 
-import 'rc-time-picker/assets/index.less';
+import 'rc-time-picker-luxon/assets/index.less';
 import React from 'react';
 import ReactDom from 'react-dom';
-import TimePicker from 'rc-time-picker';
+import TimePicker from 'rc-time-picker-luxon';
 
 const starPath = 'M908.1 353.1l-253.9-36.9L540.7 86.1c-3' +
   '.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L3' +
