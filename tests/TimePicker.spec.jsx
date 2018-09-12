@@ -6,7 +6,7 @@ import TestUtils from 'react-dom/test-utils';
 const Simulate = TestUtils.Simulate;
 import expect from 'expect.js';
 import async from 'async';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 describe('TimePicker', () => {
   let container;
@@ -19,7 +19,7 @@ describe('TimePicker', () => {
       <TimePicker
         format={format}
         showSecond={showSecond}
-        defaultValue={moment('12:57:58', format)}
+        defaultValue={DateTime.fromFormat('12:57:58', format)}
         {...props}
       />, container);
   }
@@ -32,7 +32,7 @@ describe('TimePicker', () => {
       <TimePicker
         format={format}
         showSecond={showSecond}
-        defaultValue={moment('08:24', format)}
+        defaultValue={DateTime.fromFormat('08:24', format)}
         {...props}
       />, container);
   }
@@ -71,9 +71,9 @@ describe('TimePicker', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.hour()).to.be(1);
-        expect(change.minute()).to.be(57);
-        expect(change.second()).to.be(58);
+        expect(change.hour).to.be(1);
+        expect(change.minute).to.be(57);
+        expect(change.second).to.be(58);
         expect((input).value).to.be('01:57:58');
         expect(picker.state.open).to.be.ok();
         next();
@@ -173,8 +173,8 @@ describe('TimePicker', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.hour()).to.be(1);
-        expect(change.minute()).to.be(24);
+        expect(change.hour).to.be(1);
+        expect(change.minute).to.be(24);
         expect((input).value).to.be('01:24');
         expect(picker.state.open).to.be.ok();
         next();

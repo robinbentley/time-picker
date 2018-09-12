@@ -1,18 +1,18 @@
 /* eslint no-console:0 */
 
-import 'rc-time-picker/assets/index.less';
+import 'rc-time-picker-luxon/assets/index.less';
 
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
-import TimePicker from 'rc-time-picker';
+import TimePicker from 'rc-time-picker-luxon';
 
 const showSecond = true;
 const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
-const now = moment().hour(14).minute(30);
+const now = DateTime.fromObject({ hour: 14, minute: 30 });
 
 function generateOptions(length, excludedOptions) {
   const arr = [];
@@ -25,7 +25,7 @@ function generateOptions(length, excludedOptions) {
 }
 
 function onChange(value) {
-  console.log(value && value.format(str));
+  console.log(value && value.toFormat(str));
 }
 
 function disabledHours() {

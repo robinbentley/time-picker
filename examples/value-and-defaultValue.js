@@ -1,18 +1,18 @@
 /* eslint no-console:0 */
 
-import 'rc-time-picker/assets/index.less';
+import 'rc-time-picker-luxon/assets/index.less';
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import moment from 'moment';
-import TimePicker from 'rc-time-picker';
+import { DateTime } from 'luxon';
+import TimePicker from 'rc-time-picker-luxon';
 
 class App extends React.Component {
   state = {
-    value: moment(),
+    value: DateTime.local(),
   };
   handleValueChange = (value) => {
-    console.log(value && value.format('HH:mm:ss'));
+    console.log(value && value.toFormat('HH:mm:ss'));
     this.setState({ value });
   }
   clear = () => {

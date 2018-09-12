@@ -5,7 +5,7 @@ import TestUtils from 'react-dom/test-utils';
 const Simulate = TestUtils.Simulate;
 import expect from 'expect.js';
 import async from 'async';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 const map = (arr, fn) => Array.prototype.map.call(arr, fn);
 
@@ -20,7 +20,7 @@ describe('Select', () => {
       <TimePicker
         format={format}
         showSecond={showSecond}
-        defaultValue={moment('01:02:04', format)}
+        defaultValue={DateTime.fromFormat('01:02:04', format)}
         {...props}
       />, container);
   }
@@ -155,7 +155,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.hour()).to.be(19);
+        expect(change.hour).to.be(19);
         expect((header).value).to.be('19:02:04');
         expect((input).value).to.be('19:02:04');
         expect(picker.state.open).to.be.ok();
@@ -197,7 +197,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.minute()).to.be(19);
+        expect(change.minute).to.be(19);
         expect((header).value).to.be('01:19:04');
         expect((input).value).to.be('01:19:04');
         expect(picker.state.open).to.be.ok();
@@ -239,7 +239,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.second()).to.be(19);
+        expect(change.second).to.be(19);
         expect((header).value).to.be('01:02:19');
         expect((input).value).to.be('01:02:19');
         expect(picker.state.open).to.be.ok();
@@ -309,7 +309,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.minute()).to.be(7);
+        expect(change.minute).to.be(7);
         expect((header).value).to.be('01:07:04');
         expect((input).value).to.be('01:07:04');
         expect(picker.state.open).to.be.ok();
@@ -354,7 +354,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.hour()).to.be(6);
+        expect(change.hour).to.be(6);
         expect((header).value).to.be('06:02:04');
         expect((input).value).to.be('06:02:04');
         expect(picker.state.open).to.be.ok();
@@ -366,7 +366,7 @@ describe('Select', () => {
         setTimeout(next, 100);
       }, (next) => {
         expect(change).to.be.ok();
-        expect(change.hour()).to.be(8);
+        expect(change.hour).to.be(8);
         expect((header).value).to.be('08:02:04');
         expect((input).value).to.be('08:02:04');
         expect(picker.state.open).to.be.ok();
@@ -383,7 +383,7 @@ describe('Select', () => {
     it('renders correctly', (done) => {
       const picker = renderPicker({
         use12Hours: true,
-        defaultValue: moment().hour(14).minute(0).second(0),
+        defaultValue: DateTime.fromObject({ hour: 14, minute: 0, second: 0 }),
         showSecond: false,
         format: undefined,
       });
@@ -400,7 +400,7 @@ describe('Select', () => {
         expect(picker.state.open).to.be(true);
         selector = TestUtils.scryRenderedDOMComponentsWithClass(picker.panelInstance,
           'rc-time-picker-panel-select');
-        expect((input).value).to.be('2:00 pm');
+        expect((input).value).to.be('2:00 PM');
 
         setTimeout(next, 100);
       }, (next) => {
@@ -416,7 +416,7 @@ describe('Select', () => {
     it('renders 12am correctly', (done) => {
       const picker = renderPicker({
         use12Hours: true,
-        defaultValue: moment().hour(0).minute(0).second(0),
+        defaultValue: DateTime.fromObject({ hour: 0, minute: 0, second: 0 }),
         showSecond: false,
         format: undefined,
       });
@@ -447,7 +447,7 @@ describe('Select', () => {
     it('renders 5am correctly', (done) => {
       const picker = renderPicker({
         use12Hours: true,
-        defaultValue: moment().hour(0).minute(0).second(0),
+        defaultValue: DateTime.fromObject({ hour: 0, minute: 0, second: 0 }),
         showSecond: false,
         format: undefined,
       });
@@ -464,12 +464,12 @@ describe('Select', () => {
         expect(picker.state.open).to.be(true);
         selector = TestUtils.scryRenderedDOMComponentsWithClass(picker.panelInstance,
           'rc-time-picker-panel-select')[0];
-        expect((input).value).to.be('12:00 am');
+        expect((input).value).to.be('12:00 AM');
         const option = selector.getElementsByTagName('li')[3];
         Simulate.click(option);
         setTimeout(next, 100);
       }, (next) => {
-        expect((input).value).to.be('3:00 am');
+        expect((input).value).to.be('3:00 AM');
         next();
       }], () => {
         done();
@@ -480,47 +480,9 @@ describe('Select', () => {
     it('renders 12am/pm correctly', (done) => {
       const picker = renderPicker({
         use12Hours: true,
-        defaultValue: moment().hour(0).minute(0).second(0),
+        defaultValue: DateTime.fromObject({ hour: 0, minute: 0, second: 0 }),
         showSecond: false,
         format: undefined,
-      });
-      expect(picker.state.open).not.to.be.ok();
-      const input = TestUtils.scryRenderedDOMComponentsWithClass(picker,
-        'rc-time-picker-input')[0];
-      let selector;
-      async.series([(next) => {
-        expect(picker.state.open).to.be(false);
-
-        Simulate.click(input);
-        setTimeout(next, 100);
-      }, (next) => {
-        expect(picker.state.open).to.be(true);
-        selector = TestUtils.scryRenderedDOMComponentsWithClass(picker.panelInstance,
-          'rc-time-picker-panel-select')[2];
-        expect((input).value).to.be('12:00 am');
-        const option = selector.getElementsByTagName('li')[1];
-        Simulate.click(option);
-        setTimeout(next, 200);
-      }, (next) => {
-        expect((input).value).to.be('12:00 pm');
-        next();
-      }, (next) => {
-        Simulate.click(selector.getElementsByTagName('li')[0]);
-        setTimeout(next, 200);
-      }, (next) => {
-        expect((input).value).to.be('12:00 am');
-        next();
-      }], () => {
-        done();
-      });
-    });
-
-    it('renders uppercase AM correctly', (done) => {
-      const picker = renderPicker({
-        use12Hours: true,
-        defaultValue: moment().hour(0).minute(0).second(0),
-        showSecond: false,
-        format: 'h:mm A',
       });
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(picker,
@@ -564,10 +526,7 @@ describe('Select', () => {
         disabledHours() {
           return [0, 2, 6, 18, 12];
         },
-        defaultValue: moment()
-          .hour(0)
-          .minute(0)
-          .second(0),
+        defaultValue: DateTime.fromObject({ hour: 0, minute: 0, second: 0 }),
         showSecond: false,
       });
       expect(picker.state.open).not.to.be.ok();
@@ -588,8 +547,8 @@ describe('Select', () => {
               'rc-time-picker-panel-input',
             )[0];
             expect(header).to.be.ok();
-            expect(header.value).to.be('12:00 am');
-            expect(input.value).to.be('12:00 am');
+            expect(header.value).to.be('12:00 AM');
+            expect(input.value).to.be('12:00 AM');
 
             const selector = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
@@ -601,8 +560,8 @@ describe('Select', () => {
           },
           next => {
             expect(change).not.to.be.ok();
-            expect(header.value).to.be('12:00 am');
-            expect(input.value).to.be('12:00 am');
+            expect(header.value).to.be('12:00 AM');
+            expect(input.value).to.be('12:00 AM');
             expect(picker.state.open).to.be.ok();
 
             const selector = TestUtils.scryRenderedDOMComponentsWithClass(
@@ -615,9 +574,9 @@ describe('Select', () => {
           },
           next => {
             expect(change).to.be.ok();
-            expect(change.hour()).to.be(5);
-            expect(header.value).to.be('5:00 am');
-            expect(input.value).to.be('5:00 am');
+            expect(change.hour).to.be(5);
+            expect(header.value).to.be('5:00 AM');
+            expect(input.value).to.be('5:00 AM');
             expect(picker.state.open).to.be.ok();
 
             const selector = TestUtils.scryRenderedDOMComponentsWithClass(
@@ -631,8 +590,8 @@ describe('Select', () => {
           },
           next => {
             expect(change).not.to.be.ok();
-            expect(header.value).to.be('5:00 pm');
-            expect(input.value).to.be('5:00 pm');
+            expect(header.value).to.be('5:00 PM');
+            expect(input.value).to.be('5:00 PM');
             expect(picker.state.open).to.be.ok();
 
             const selector = TestUtils.scryRenderedDOMComponentsWithClass(
@@ -645,8 +604,8 @@ describe('Select', () => {
           },
           next => {
             expect(change).not.to.be.ok();
-            expect(header.value).to.be('5:00 pm');
-            expect(input.value).to.be('5:00 pm');
+            expect(header.value).to.be('5:00 PM');
+            expect(input.value).to.be('5:00 PM');
             expect(picker.state.open).to.be.ok();
 
             const selector = TestUtils.scryRenderedDOMComponentsWithClass(
@@ -659,9 +618,9 @@ describe('Select', () => {
           },
           next => {
             expect(change).to.be.ok();
-            expect(change.hour()).to.be(17);
-            expect(header.value).to.be('5:00 pm');
-            expect(input.value).to.be('5:00 pm');
+            expect(change.hour).to.be(17);
+            expect(header.value).to.be('5:00 PM');
+            expect(input.value).to.be('5:00 PM');
             expect(picker.state.open).to.be.ok();
 
             next();

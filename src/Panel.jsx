@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Combobox from './Combobox';
-import moment from 'moment';
 import classNames from 'classnames';
+import { DateTime } from 'luxon';
 
 function noop() {
 }
@@ -56,7 +56,7 @@ class Panel extends Component {
     disabledHours: noop,
     disabledMinutes: noop,
     disabledSeconds: noop,
-    defaultOpenValue: moment(),
+    defaultOpenValue: DateTime.local(),
     use12Hours: false,
     addon: noop,
     onKeyDown: noop,
@@ -109,7 +109,7 @@ class Panel extends Component {
 
   isAM() {
     const value = (this.state.value || this.props.defaultOpenValue);
-    return value.hour() >= 0 && value.hour() < 12;
+    return value.hour >= 0 && value.hour < 12;
   }
 
   render() {
@@ -123,9 +123,9 @@ class Panel extends Component {
       value, currentSelectPanel,
     } = this.state;
     const disabledHourOptions = this.disabledHours();
-    const disabledMinuteOptions = disabledMinutes(value ? value.hour() : null);
-    const disabledSecondOptions = disabledSeconds(value ? value.hour() : null,
-      value ? value.minute() : null);
+    const disabledMinuteOptions = disabledMinutes(value ? value.hour : null);
+    const disabledSecondOptions = disabledSeconds(value ? value.hour : null,
+      value ? value.minute : null);
     const hourOptions = generateOptions(
       24, disabledHourOptions, hideDisabledOptions, hourStep
     );
