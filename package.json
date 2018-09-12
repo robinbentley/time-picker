@@ -1,6 +1,6 @@
 {
   "name": "rc-time-picker-luxon",
-  "version": "3.4.0",
+  "version": "1.0.0",
   "description": "React TimePicker using Luxon",
   "keywords": [
     "react",
@@ -10,7 +10,8 @@
     "time-picker",
     "ui component",
     "ui",
-    "component"
+    "component",
+    "luxon"
   ],
   "files": [
     "lib",
@@ -20,7 +21,10 @@
   "main": "lib/index",
   "module": "es/index",
   "homepage": "https://github.com/robinbentley/time-picker-luxon",
-  "author": "wuzhao.mail@gmail.com",
+  "author": "Robin Bentley <robinbentley@me.com> (https://robinbentley.com)",
+  "contributors": [
+    "wuzhao.mail@gmail.com"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:robinbentley/time-picker-luxon.git"
@@ -28,7 +32,7 @@
   "bugs": {
     "url": "https://github.com/robinbentley/time-picker-luxon/issues"
   },
-  "licenses": "MIT",
+  "license": "MIT",
   "config": {
     "port": 8011
   },

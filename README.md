@@ -12,7 +12,7 @@ install
 -------
 
 ```
-npm install rc-time-picker-luxon
+npm install --save rc-time-picker-luxon
 ```
 
 Usage
