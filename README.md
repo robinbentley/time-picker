@@ -1,5 +1,5 @@
 # TimePicker 
-[![CircleCI](https://circleci.com/gh/robinbentley/time-picker/tree/master.svg?style=svg)](https://circleci.com/gh/robinbentley/time-picker/tree/master)
+[![CircleCI](https://circleci.com/gh/robinbentley/time-picker-luxon/tree/master.svg?style=svg)](https://circleci.com/gh/robinbentley/time-picker-luxon/tree/master)
 
 Version of [react-component/time-picker](https://github.com/react-component/time-picker) that uses [Luxon](https://github.com/moment/luxon) rather than Moment.
 
